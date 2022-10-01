@@ -1,28 +1,57 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+
+    <div id="app">
+      <Nav :user="user" /> 
+         
+       <router-view :user="user" />
+     </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios' 
+import Nav from  './components/Nav.vue'
 
 export default {
   name: 'App',
+
+    data(){
+
+      return {
+        user: null
+      }
+
+    },
+  created(){
+
+   
+// eslint-disable-next-line no-unused-vars
+const token = window.localStorage.getItem('jwt');
+
+ axios.get('http://localhost:8000/api/user',{
+
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+
+
+ }
+
+ ).then((response) =>{
+
+  this.user= response.data;
+  console.log(response);
+
+});
+},
   components: {
-    HelloWorld
+    Nav
+  
   }
+
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
