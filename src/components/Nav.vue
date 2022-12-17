@@ -15,6 +15,10 @@
               <li class="nav-item">
                   <router-link to="/calendar">Calendar</router-link>
               </li>
+              
+              <li class="nav-item">
+                  <router-link to="/article">Article</router-link>
+              </li>
             
             </ul>
             

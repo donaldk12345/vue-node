@@ -5,7 +5,7 @@ import axios from 'axios';
 // eslint-disable-next-line no-undef
 axios.defaults.withCredentials = true;
 Vue.config.productionTip = false;
-axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.baseURL = 'https://localhost:8001/';
 
 
 

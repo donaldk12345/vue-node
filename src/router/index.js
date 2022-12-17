@@ -4,6 +4,7 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Register from '../components/Register.vue'
 import Calendar from '../components/Calendar.vue'
+import Article from '../components/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,8 @@ const routes = [{
     },
     { path: '/login', component: Login },
     { path: '/register', component: Register },
-    { path: '/calendar', component: Calendar }
+    { path: '/calendar', component: Calendar },
+    { path: '/article', component: Article },
 
 
 
