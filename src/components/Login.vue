@@ -84,7 +84,8 @@ export default {
             }).catch(error=> {
               if(error){
                 //console.log(error)
-                this.error = 'Le mot de passe ou l\'email saisir est incorrect !';
+                this.error=error.response.data.message;
+                //this.error = 'Le mot de passe ou l\'email saisir est incorrect !';
                 
               }else{
 

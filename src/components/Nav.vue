@@ -35,6 +35,9 @@
             
               </ul>
             <ul class="navbar-nav  don" v-if="user">
+              <li class="nav-item">
+                   <router-link to="/profile">Profile</router-link>
+              </li>
                
              <li class="nav-item">
                 <a href="javascript:void(0)" @click="handleClick">Logout</a>

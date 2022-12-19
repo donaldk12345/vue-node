@@ -67,14 +67,12 @@
     mounted(){
         axios.get('http://127.0.0.1:8000/api/articles').then((response) =>{
         
-    this.articles= response.data;
+    this.articles= response.data.value;
     console.log('Mes articles',this.articles)
            });
     }
     
-
-    
-}
+    }
 </script>
     <style>
     body{

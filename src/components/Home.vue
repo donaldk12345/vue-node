@@ -2,7 +2,7 @@
 
   <div class="container  mt-3">
       
-  <div class="mt-2 text-center " v-if="user" > email {{ user.email}} <br> nom: {{user.name }} </div>
+
 
   </div>
   </template>
