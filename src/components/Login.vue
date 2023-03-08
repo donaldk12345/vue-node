@@ -79,7 +79,9 @@ export default {
              ).then(response => {
             //console.log(response);
             //const t= data.token
-            localStorage.setItem('jwt', response.data.jwt)
+               localStorage.setItem('jwt', response.data.jwt);
+              this.$router.push('/home');
+               window.location.reload();
            
             }).catch(error=> {
               if(error){

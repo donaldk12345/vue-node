@@ -40,7 +40,7 @@ const token = window.localStorage.getItem('jwt');
  ).then((response) =>{
 
   this.user= response.data;
-  console.log(response);
+  console.log(this.user);
 
 });
 },

@@ -64,6 +64,7 @@ export default {
       handleClick(){
         localStorage.removeItem('jwt');
         this.$router.push('/login');
+        window.location.reload();
       }
     }
     

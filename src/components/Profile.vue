@@ -19,7 +19,7 @@
                  
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form @submit.prevent="changePassword">
                            <!--  <div v-if="error" class="alert alert-danger">
                             {{ error }}
                          </div>  
@@ -34,8 +34,8 @@
                           class="form-control"
                           id="exampleFormControlInput1"
                           placeholder="Entrez votre ancien mot de passe "
-                       
-                          name="email"
+                          v-model="old_password"
+                          name="old_password"
                         />
                        </div>
                         <div class="mb-3">
@@ -45,7 +45,7 @@
                           class="form-control"
                           id="exampleFormControlInput1"
                           placeholder="Entrez nouveau mot de passe "
-                         
+                           v-model="password"
                           name="password"
                         />
                        </div>
@@ -57,12 +57,13 @@
                           id="exampleFormControlInput1"
                           placeholder="confirmation du nouveau mot de passe "
                          
-                          name="password"
+                         v-model="confirm_password"
+                          name="confirm_password"
                         />
                        </div>
                        
                        <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
                        </div>
                       </form>
                     </div>
@@ -74,13 +75,57 @@
     </template>
   
   <script>
-  
+import axios from 'axios';
   
   export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Profile',
+    props: ['user'],
+        data(){
+        return {
+            old_password: '',
+            password: '',
+            confirm_password: '',      
+            //user: null,
+            error: '',
+            success:''
+        }
+    },
+     methods: {
+
+      userConnect(){
+             const token = window.localStorage.getItem('jwt');
+            console.log('Mon token',token);
+      },
+        
+         async changePassword(){
+       
+             await axios.post('http://localhost:8000/api/change-password',{
+               old_password: this.old_password,
+               password: this.password,
+               confirm_password: this.confirm_password,
+               
+            }).then(
+            res => {
+                console.log(res)
+            }
+           ).catch(
+            err => {
+                console.log(err)
+            }
+           );
+           
+           //this.$router.push('/login');
+
+         
+
+
+           
+          }
+        
+      
+     }
   
-    props: ['user']
   
   }
   </script>
